@@ -25,6 +25,7 @@ const config = getDefaultConfig({
     arbitrum,
     base,
     zora,
+    sepolia,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [sepolia] : []),
   ],
   ssr: true,
@@ -34,9 +35,9 @@ const client = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiProvider config={config}>
+    <WagmiProvider config={config} >
       <QueryClientProvider client={client}>
-        <RainbowKitProvider>
+        <RainbowKitProvider >
           <Component {...pageProps} />
         </RainbowKitProvider>
       </QueryClientProvider>
